@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" id="true" name="true">
+<input type="number" id="number" name="true">
+<script>
+    const cb = document.querySelector('#true');
+    const cNumber = document.querySelector('#number');
+    cb.onclick = () => {
+        let learnJS = new Promise(function (resolve, reject) {
+            if (cb.checked) {
+                resolve("Có check tuổi");
+            } else {
+                reject("Không check");
+            }
+        });
+        learnJS.then(
+            success => {
+                console.log(success);
+                return new Promise(function (resolve, reject) {
+                    if (cNumber.value > 18) {
+                        resolve("Lớn hơn 18 tuổi");
+                    } else {
+                        reject("Nhỏ hơn 18 tuổi");
+                    }
+                })
+            },
+            reason => {
+                console.log(reason);
+                return null;
+            }
+        ).then(value => {
+            console.log(value)
+        }, reason => {
+            console.log(reason)
+        });
+
+    };
+
+</script>
+</body>
+</html>

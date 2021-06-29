@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" id="true" name="true">
+<script>
+    const cb = document.querySelector('#true');
+    cb.onclick = () => {
+        console.log("")
+        console.log("Start")
+        let learnJS = new Promise(function (resolve, reject) {
+            if (cb.checked) {
+                resolve("Đã hoàn thành");
+            } else {
+                reject("Chưa hoàn thành");
+            }
+        });
+        learnJS.then(
+            success => console.log(success),
+            reason => console.log(reason)
+        );
+        console.log("End")
+        console.log("")
+
+    };
+
+</script>
+</body>
+</html>
