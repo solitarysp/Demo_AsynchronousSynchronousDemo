@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" id="true" name="true">
+<input type="number" id="number" name="true">
+<script>
+    const cb = document.querySelector('#true');
+    const cNumber = document.querySelector('#number');
+    cb.onclick = () => {
+        checkInfo();
+    };
+
+    async function checkInfo() {
+        const result = await isCheck();
+        if ("Có check tuổi" === result) {
+            const resultCheckNumber = await checkNumber();
+            console.log(resultCheckNumber)
+        } else {
+            console.log(result)
+        }
+        return result;
+    }
+
+    async function isCheck() {
+        return new Promise(function (resolve, reject) {
+            if (cb.checked) {
+                resolve("Có check tuổi");
+            } else {
+                reject("Không check");
+            }
+        });
+    }
+
+    async function checkNumber() {
+        return new Promise(function (resolve, reject) {
+            if (cNumber.value > 18) {
+                resolve("Lớn hơn 18 ");
+            } else {
+                reject("Nhỏ hơn 18 ");
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
